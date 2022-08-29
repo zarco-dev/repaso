@@ -1,19 +1,21 @@
 require "sqlite3"
-DB = SQLite3::Database.new("tasks.db")
+require_relative './models/task'
+
+DB = SQLite3::Database.new('db/tasks.db')
 DB.results_as_hash = true
-require_relative 'task'
 
 # READ (One)
 # task = Task.find(1)
 # puts task.title
 
 # CREATE
-# task = Task.new(title: "Fill the beers rack in the fridge", description: "Vegetables should be moved somewhere else.")
+# task = Task.new(title: "test2", description: "test3", done: 0)
 # task.save
 
 # UPDATE
 # task = Task.find(3)
-# task.done = true
+# # task.done = false
+# task.title = "SEBAS"
 # task.save
 
 # READ (All)
@@ -22,5 +24,5 @@ require_relative 'task'
 # end
 
 # DESTROY
-# task = Task.find(2)
-# task.destroy
+task = Task.find(2)
+task.destroy
